@@ -83,9 +83,6 @@ function unloadFromWindow(window) {
 
     // stop and delete
     window.Timeshift.cleanup();
-
-/*  window.Timeshiftl10n = undefined;
-    delete window.Timeshiftl10n;*/
     delete window.Timeshift;
 }
 
