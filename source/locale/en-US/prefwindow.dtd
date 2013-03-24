@@ -1,0 +1,37 @@
+<!ENTITY prefwindow.title           "Time Shift preferences">
+<!ENTITY paneGeneral.title          "General">
+<!ENTITY paneGeneralHelp.description  "The UTC offset is server time offset from UTC. Date format specifies the short date used on the site. ">
+<!ENTITY groupbox.sitesList         "Sites to Time Shift">
+<!ENTITY site.label                 "Site:">
+<!ENTITY offset.label               "UTC Offset (+/-):">
+<!ENTITY format.label               "Date format:">
+<!ENTITY order.label                "Date Order:">
+<!ENTITY siteColumn                 "Site">
+<!ENTITY offsetColumn               "UTC Offset">
+<!ENTITY formatColumn               "Date Format">
+<!ENTITY orderColumn                "Date Order">
+<!ENTITY editSite.button            "Edit Site">
+<!ENTITY deleteSite.button          "Delete Site">
+<!ENTITY up.label                   "Up">
+<!ENTITY down.label                 "Down">
+<!ENTITY groupbox.editSite          "Site Editor">
+<!ENTITY saveSite.label             "Save Site">
+<!ENTITY cancelSite.label           "Clear">
+<!ENTITY formatMenu.Global          "Global">
+<!ENTITY formatMenu.Good            "dd/mm/yy(yy)">
+<!ENTITY formatMenu.Bad             "mm/dd/yy(yy)">
+<!ENTITY orderMenu.Date             "Date/Time">
+<!ENTITY orderMenu.Time             "Time/Date">
+<!ENTITY groupbox.formatSelect      "Display Format">
+<!ENTITY dateFormat.label           "Date Format">
+<!ENTITY timeFormat.label           "Time Format">
+<!ENTITY dateFormatMenu.1           "dd/mm/yyyy">
+<!ENTITY dateFormatMenu.2           "dd mmm yyyy">
+<!ENTITY dateFormatMenu.3           "dd mmmm yyyy">
+<!ENTITY dateFormatMenu.4           "yyyy-mm-dd">
+<!ENTITY dateFormatMenu.5           "mm/dd/yyyy">
+<!ENTITY timeFormatMenu.1           "24 hour">
+<!ENTITY timeFormatMenu.2           "12 hour">
+<!ENTITY showOld.label              "Show original time on mouseover">
+<!ENTITY groupbox.html5             "HTML5">
+<!ENTITY html5auto.label            "Automatically convert HTML5 time tags to local time for all sites.">

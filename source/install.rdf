@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>timeshift@trevor.hobson</em:id>
+    <em:name>Time Shift</em:name>
+    <em:version>0.2</em:version>
+    <em:type>2</em:type>
+    <em:bootstrap>true</em:bootstrap>
+    <em:description>Changes site dates and times to your local time and format of choice.</em:description>
+    <em:creator>Trevor Hobson</em:creator>
+    <em:homepageURL>https://github.com/trevorhobson/timeshift</em:homepageURL>
+    <em:optionsURL>chrome://timeshift/content/options.xul</em:optionsURL>
+    <em:optionsType>1</em:optionsType>
+
+
+    <!-- firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>17</em:minVersion>
+        <em:maxVersion>22.0a1</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

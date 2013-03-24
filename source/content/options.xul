@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://timeshift/skin/options.css" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://timeshift/locale/prefwindow.dtd">
+ <prefwindow id="timeshiftPreferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;">
+	<prefpane id="paneGeneral" label="&paneGeneral.title;" onpaneload="timeshiftOptions.init()">
+		<script type="application/x-javascript" src="chrome://timeshift/content/options.js" />
+
+		<stringbundleset id="stringbundleset">
+			<stringbundle id="string-bundle" src="chrome://timeshift/locale/timeshift.properties"/>
+		</stringbundleset>
+
+		<preferences>
+			<preference id="dateFormat" name="extensions.timeshift.DateFormat" type="string" />
+			<preference id="timeFormat" name="extensions.timeshift.TimeFormat" type="string" />
+			<preference id="sites" name="extensions.timeshift.Sites" type="string" />
+			<preference id="showOld" name="extensions.timeshift.ShowOld" type="bool" />
+			<preference id="Html5Auto" name="extensions.timeshift.Html5Auto" type="bool" />
+		</preferences>
+
+		<description>&paneGeneralHelp.description;</description>
+
+		<!-- html5 -->
+		<vbox id="html5optionsGroupBox">
+			<groupbox id="html5GroupBox">
+			<caption label="&groupbox.html5;" />
+				<hbox>
+					<checkbox id="Html5Auto" preference="Html5Auto" label="&html5auto.label;" />
+				</hbox>
+			</groupbox> 
+		</vbox>
+
+		<!-- List of Sites to Time Shift -->
+		<groupbox id="sitesListGroupBox">
+		<caption label="&groupbox.sitesList;" />
+			<tree id="sitesTree" flex="1" seltype="single" hidecolumnpicker="true" rows="7">
+				<treecols>
+					<treecol id="siteCol" label="&siteColumn;" flex="76" />
+					<splitter class="tree-splitter" />
+					<treecol id="offsetCol" label="&offsetColumn;" flex="7" style="text-align: right;" />
+					<splitter class="tree-splitter" />
+					<treecol id="formatCol" label="&formatColumn;" flex="10" />
+					<splitter class="tree-splitter" />
+					<treecol id="orderCol" label="&orderColumn;" flex="7" />
+				</treecols>
+				<treechildren id="sitesList">
+					<!-- to be populated by the javascript -->
+				</treechildren>
+			</tree>
+
+			<!-- Up, Down, Edit and Delete Buttons -->
+			<hbox pack="center">
+				<hbox pack="start" flex="40">
+					<button id="upButton" label="&up.label;" oncommand="timeshiftOptions.move('up');" />
+					<button id="downButton" label="&down.label;" oncommand="timeshiftOptions.move('down');" />
+				</hbox>
+				<spacer flex="10" />
+				<hbox pack="end" flex="50">
+					<button id="editButton" label="&editSite.button;" oncommand="timeshiftOptions.editSite();" />
+					<button id="deleteButton" label="&deleteSite.button;" oncommand="timeshiftOptions.deleteSite();" />
+				</hbox>
+			</hbox>
+		</groupbox>
+
+		<!-- Create/Edit Site Options -->
+		<vbox id="siteEditorGroupBox">
+			<groupbox id="sitesGroupBox">
+			<caption label="&groupbox.editSite;" />
+				<hbox>
+					<label value="&site.label;" control="sitesField" />
+					<textbox class="padded" flex="1" id="sitesField"
+					  type="autocomplete" autocompletesearch="history" />
+				</hbox>
+				<hbox>
+					<label value="&offset.label;" control="offsetField" />
+					<textbox class="padded" id="offsetField" width="60" />
+					<label value="&format.label;" control="formatField" />
+					<menulist id="formatField">
+						<menupopup>
+							<menuitem label="" value="" />
+							<menuitem label="&formatMenu.Global;" value="0" />
+							<menuitem label="&formatMenu.Good;" value="1" />
+							<menuitem label="&formatMenu.Bad;" value="2" />
+						</menupopup>
+					</menulist>
+					<label value="&order.label;" control="orderField" />
+					<menulist id="orderField">
+						<menupopup>
+							<menuitem label="" value="" />
+							<menuitem label="&orderMenu.Date;" value="0" />
+							<menuitem label="&orderMenu.Time;" value="1" />
+						</menupopup>
+					</menulist>
+				</hbox>
+
+				<!-- hidden textbox to store the index of the Site being modified -->
+				<textbox id="editIndex" value="" hidden="true" />
+
+				<!-- Save and Cancel Buttons -->
+				<hbox pack="center">
+					<button id="saveButton" label="&saveSite.label;" oncommand="timeshiftOptions.saveSite();" />
+					<button id="cancelButton" label="&cancelSite.label;" oncommand="timeshiftOptions.cancelSite();" />
+				</hbox>
+			</groupbox> 
+		</vbox>
+
+		<!-- Date and Time formats -->
+		<vbox id="formatSelectorGroupBox">
+			<groupbox id="formatGroupBox">
+			<caption label="&groupbox.formatSelect;" />
+				<hbox>
+					<label value="&dateFormat.label;" control="dateFormat" />
+					<menulist id="dateFormat" preference="dateFormat">
+						<menupopup>
+							<menuitem label="&dateFormatMenu.1;" value="1" />
+							<menuitem label="&dateFormatMenu.2;" value="2" />
+							<menuitem label="&dateFormatMenu.3;" value="3" />
+							<menuitem label="&dateFormatMenu.4;" value="4" />
+							<menuitem label="&dateFormatMenu.5;" value="5" />
+						</menupopup>
+					</menulist>
+					<label value="&timeFormat.label;" control="timeFormat" />
+					<menulist id="timeFormat" preference="timeFormat">
+						<menupopup>
+							<menuitem label="&timeFormatMenu.1;" value="1" />
+							<menuitem label="&timeFormatMenu.2;" value="2" />
+						</menupopup>
+					</menulist>
+				</hbox>
+				<hbox>
+					<checkbox id="showOld" preference="showOld" label="&showOld.label;" />
+				</hbox>
+			</groupbox> 
+		</vbox>
+
+	</prefpane>
+</prefwindow>

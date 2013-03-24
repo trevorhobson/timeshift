@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html><head><title>Time Shift add-on test page</title></head><body>
+<b>Time Shift add-on test page</b><br>
+Date/Time will shift together if order is set to Date/Time<br>
+Time/Date will shift together if order is set to Time/Date
+<table border="1">
+<tbody>
+<tr>
+<td>Text description of date<br>
+</td>
+<td>Text date<br>
+</td>
+<td>HTML5 time<br>
+</td>
+</tr>
+
+<tr>
+<td>Change a dd/mm/yyyy date (twenty-forth march 2007)</td>
+<td>24/03/2007</td><td><time datetime="2007-03-24">24/03/2007</time></td>
+</tr>
+
+<tr>
+<td>Change a dd/mm/yy date (twenty-forth march 2007)</td>
+<td>24/03/07</td><td><time datetime="2007-03-24">24/03/07</time></td>
+</tr>
+
+<tr>
+<td>Change a dd mmm yyyy date (twenty-forth march 2007)</td>
+<td>24 Mar 2007</td><td><time datetime="2007-03-24">24 Mar 2007</time></td>
+</tr>
+
+<tr>
+<td>Change a dd mmmm yyyy date (twenty-forth march 2007)</td>
+<td>24 March 2007</td><td><time datetime="2007-03-24">24 March 2007</time></td>
+</tr>
+
+<tr>
+<td>Change a ddd dd mmm yyyy date (twenty-forth march 2007)</td>
+<td>Sat 24 Mar 2007</td><td><time datetime="2007-03-24">Sat 24 Mar 2007</time></td>
+</tr>
+
+<tr>
+<td>Change a yyyy-mm-dd date (twenty-forth march 2007)</td>
+<td>2007-03-24</td><td><time datetime="2007-03-24">2007-03-24</time></td>
+</tr>
+
+<tr>
+<td>Change a yy-mm-dd date (twenty-forth march 2007)</td>
+<td>07-03-24</td><td><time datetime="2007-03-24">07-03-24</time></td>
+</tr>
+
+<tr>
+<td>Change a hh:mm AM/PM time (12hrs 5min AM)</td>
+<td>12:05 AM</td><td>N/A</td>
+</tr>
+
+<tr>
+<td>Change a hh:mm time (13hrs 5min)</td>
+<td>13:05</td><td>N/A</td>
+</tr>
+
+<tr>
+<td>Change a hh:mm:ss AM/PM time (12hrs 5min 44sec AM)</td>
+<td>12:05:44 AM</td><td>N/A</td>
+</tr>
+
+<tr>
+<td>Change a hh:mm:ss time (13hrs 5min 44sec)</td>
+<td>13:05:44</td><td>N/A</td>
+</tr>
+
+<tr>
+<td>Change two dd/mm/yyyy dates<br>(twenty-forth march 2007) (twenty-fifth march 2007)</td>
+<td>24/03/2007 25/03/2007</td><td><time datetime="2007-03-24">24/03/2007</time> <time datetime="2007-03-25">25/03/2007</time></td>
+</tr>
+
+<tr>
+<td>Change a dd/mm/yyyy date (twenty-forth march 2007)<br>and a hh:mm:ss AM/PM time (12hrs 5min 44sec AM)</td>
+<td>24/03/2007 12:05:44 AM</td><td><time datetime="2007-03-24T00:05:44Z">24/03/2007 12:05:44 AM</time></td>
+</tr>
+
+<tr>
+<td>Change a dd mmm yyyy date (twenty-forth march 2007)<br>and a hh:mm:ss AM/PM time (11hrs 5min 44sec PM)</td>
+<td>24 Mar 2007 11:05:44 PM</td><td><time datetime="2007-03-24T23:05:44Z">24 Mar 2007 11:05:44 PM</time></td>
+</tr>
+
+<tr>
+<td>Change a dd mmm yyyy date (twenty-forth march 2007)<br>and a hh:mm:ss AM/PM time (11hrs 5min 44sec PM)<br>with a comma seperator</td>
+<td>24 Mar 2007, 11:05:44pm</td><td><time datetime="2007-03-24T23:05:44Z">24 Mar 2007, 11:05:44pm</time></td>
+</tr>
+
+<tr>
+<td>Change a dd/mm/yyyy date (twenty-forth march 2007)<br>and a hh:mm:ss AM/PM time (12hrs 5min 44sec AM)<br>and a hh:mm:ss time (13hrs 5min 44sec)</td>
+<td>24/03/2007 12:05:44 AM 13:05:44</td><td><time datetime="2007-03-24T00:05:44Z">24/03/2007 12:05:44 AM</time> N/A</td>
+</tr>
+
+<tr>
+<td>Change a hh:mm:ss AM/PM time (12hrs 5min 44sec AM)<br>and a dd/mm/yyyy date (twenty-forth march 2007)</td>
+<td>12:05:44 AM 24/03/2007</td><td><time datetime="2007-03-24T00:05:44Z">12:05:44 AM 24/03/2007</time></td>
+</tr>
+
+<tr>
+<td colspan="3">Not implemented yet, possibly if requested or I like a site that uses them.<br>Of course the HTML5 time tag does not care what you put inside it!</td>
+</tr>
+
+<tr>
+<td>Change a dd-mmm-yyyy date (twenty-forth march 2007)</td>
+<td>24-Mar-2007</td><td><time datetime="2007-03-24">24-Mar-2007</time></td>
+</tr>
+
+<tr>
+<td>Change a mmm, dd yyyy date (march, twenty-forth 2007)</td>
+<td>Mar, 24 2007</td><td><time datetime="2007-03-24">Mar, 24 2007</time></td>
+</tr>
+
+<tr>
+<td>Change a dd mmm date (no year) (twenty-forth march)</td>
+<td>24 Mar</td><td>N/A</td>
+</tr>
+
+<tr>
+<td>Change a date and time separated by a tag (as a single unit)<br>dd/mm/yyyy date (twenty-forth march 2007)&lt;br&gt;<br>hh:mm:ss AM/PM time (12hrs 5min 44sec AM)</td>
+<td>24/03/2007<br>12:05:44 AM</td><td><time datetime="2007-03-24T00:05:44Z">24/03/2007<br>12:05:44 AM</time></td>
+</tr>
+</tbody>
+</table>
+
+</body></html>
