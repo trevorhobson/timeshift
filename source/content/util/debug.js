@@ -14,7 +14,6 @@ Timeshift.debug.level = 10;
 Timeshift.debug.traceLevels = [];
 
 Timeshift.debug.trace = function(traceDomain, traceLevel, stringMessage, stringCaller) {
-Services.prompt.alert(null, "Timeshift", "Hello");
     if (stringCaller == undefined)
     {
         stringCaller = '';
