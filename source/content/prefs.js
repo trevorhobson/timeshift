@@ -46,52 +46,11 @@ Timeshift.prefs.observer = {
     }
 };
 
-Timeshift.prefs.site = function(number, site, offset, format, order) {
-    this.site = site;
-    this.offset = offset;
-    this.format = format;
-    this.order = order;
-    return this;
-};
-
 Timeshift.prefs.reader = function() {
     // Create sites list array
-    var count = 0;
-    Timeshift.prefs.sites = new Array();
     Timeshift.prefs.prefSites = Timeshift.prefs.getCharPref("Sites");
-    if(Timeshift.prefs.prefSites != "")
-    {
-        // Handle old style sites preferences
-        if(Timeshift.prefs.prefSites.indexOf('.HEADER.') > 0)
-        {
-            var posHeader = Timeshift.prefs.prefSites.lastIndexOf('.HEADER.');
-            var optHeaderVer = 1;
-            if(posHeader > 0)
-            {
-                var optHeader = Timeshift.prefs.prefSites.split('.HEADER.')[0];  // Get the header
-                optHeaderVer = optHeader.valueOf();
-                Timeshift.prefs.prefSites = Timeshift.prefs.prefSites.substring(posHeader+8);  // Strip the header from the pref
-            }
-            var optSites = Timeshift.prefs.prefSites.split('.NEXT.');
-            for (var i=0; i < optSites.length; i++)
-            {
-                var optSitesPieces = optSites[i].split('.ITEM.');
-                // Updates any existing sites pref to the latest version (added in 0.0.3)
-                if(optHeaderVer == 2)
-                {
-                    Timeshift.prefs.sites[Timeshift.prefs.count] = new Timeshift.prefs.site(Timeshift.prefs.count++, optSitesPieces[0], optSitesPieces[1], optSitesPieces[2], optSitesPieces[3]);
-                } else if(optHeaderVer == 1)
-                {
-                    Timeshift.prefs.sites[Timeshift.prefs.count] = new Timeshift.prefs.site(Timeshift.prefs.count++, optSitesPieces[0], optSitesPieces[1], optSitesPieces[2], '0');
-                }
-            }
-        }
-        // Handle new style sites preferences
-        else
-        {
-            Timeshift.prefs.sites = JSON.parse(Timeshift.prefs.prefSites);
-        }
-    }
+    Timeshift.prefs.sites = Timeshift.prefsGeneric.sites(Timeshift.prefs.prefSites);
+
     // Read date and time format options
     Timeshift.prefs.optDateFormat = Timeshift.prefs.getCharPref("DateFormat");
     Timeshift.prefs.optTimeFormat = Timeshift.prefs.getCharPref("TimeFormat");

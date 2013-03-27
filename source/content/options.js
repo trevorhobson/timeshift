@@ -5,6 +5,9 @@
  * http://mozilla.org/MPL/2.0/.
  */
 
+const Cu = Components.utils;
+Cu.import('resource://gre/modules/Services.jsm');
+
 var timeshiftOptions = {
     timeshiftPrefs: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("extensions.timeshift."),
     stringsBundle: '',
@@ -75,43 +78,12 @@ var timeshiftOptions = {
         // Create sites list tree
         timeshiftOptions.count = 0;
         timeshiftOptions.sites = new Array();
+        Services.scriptloader.loadSubScript('chrome://timeshift/content/prefs-generic.js', this.owner, 'UTF-8');
         var prefString = timeshiftOptions.timeshiftPrefs.getCharPref('Sites');
-        if(prefString != "")
-        {
-            // Handle old style sites preferences
-            if(prefString.indexOf('.HEADER.') > 0)
-            {
-                var posHeader = prefString.lastIndexOf('.HEADER.');
-                var optHeaderVer = 1;
-                if(posHeader > 0)
-                {
-                    var optHeader = prefString.split('.HEADER.')[0];  // Get the header
-                    optHeaderVer = optHeader.valueOf();
-                    prefString = prefString.substring(posHeader+8);  // Strip the header from the pref
-                }
-                var optSites = prefString.split('.NEXT.');
-                for (var i=0; i < optSites.length; i++)
-                {
-                    var optSitesPieces = optSites[i].split('.ITEM.');
-                    // Updates any existing sites pref to the latest version (added in 0.0.3)
-                    if(optHeaderVer == 2)
-                    {
-                        timeshiftOptions.sites[timeshiftOptions.count] = new timeshiftOptions.site(timeshiftOptions.count++, optSitesPieces[0], optSitesPieces[1], optSitesPieces[2], optSitesPieces[3]);
-                    } else if(optHeaderVer == 1)
-                    {
-                        timeshiftOptions.sites[timeshiftOptions.count] = new timeshiftOptions.site(timeshiftOptions.count++, optSitesPieces[0], optSitesPieces[1], optSitesPieces[2], '0');
-                    }
-                }
-            }
-            // Handle new style sites preferences
-            else
-            {
-                timeshiftOptions.sites = JSON.parse(prefString);
-            }
-            timeshiftOptions.sitesTreeView.rowCount = timeshiftOptions.sites.length;
-            timeshiftOptions.sitesTree.view = timeshiftOptions.sitesTreeView;
-        }
-
+        timeshiftOptions.sites = Timeshift.prefsGeneric.sites(prefString);
+        timeshiftOptions.count = timeshiftOptions.sites.length;
+        timeshiftOptions.sitesTreeView.rowCount = timeshiftOptions.sites.length;
+        timeshiftOptions.sitesTree.view = timeshiftOptions.sitesTreeView;
     },
 
     // Edits the currently selected Site
@@ -158,7 +130,10 @@ var timeshiftOptions = {
     saveSitesList: function()
     {
         var sitesPref = document.getElementById("sites");
-        var prefString = JSON.stringify(timeshiftOptions.sites);
+        var prefObj = {};
+        prefObj.version = "3";
+        prefObj.sites = timeshiftOptions.sites;
+        var prefString = JSON.stringify(prefObj);
         sitesPref.value = prefString;
     },
 

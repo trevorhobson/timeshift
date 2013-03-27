@@ -15,6 +15,7 @@ TimeshiftFirefox.prototype = {
         // loading Timeshift into window.Timeshift
 
         'prefs.js',
+        'prefs-generic.js',
         'locale.js',
         'process.js',
         'util/debug.js',
