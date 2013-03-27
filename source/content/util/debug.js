@@ -33,7 +33,7 @@ Timeshift.debug.trace = function(traceDomain, traceLevel, stringMessage, stringC
 
 Timeshift.debug.getLevel = function() {
     // Get the debug level
-    // Levels are: 10-Few alerts -> 999-Every alert
+    // Levels are: 10-Few log messages -> 999-Every log message
     Timeshift.debug.level = Timeshift.prefs.getIntPref("debugLevel") || 10;
 
     var allDebugTraceLevels = Timeshift.debug.tracePrefs.getChildList("", {});
